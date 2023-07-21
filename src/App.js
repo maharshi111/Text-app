@@ -3,13 +3,16 @@ import './App.css';
 import Navbar from  './Components/Navbar'// src\Components\Navbar.js
 import Alert from  './Components/Alert'
 import TextForm from './Components/TextForm';
+import About from  './Components/About'
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   //Link  //actually in app.js we are not requiring link so i am commenting out to avoid warning at the same time I am using link in navbar component so there I am importing it 
 } from "react-router-dom";
-import About from  './Components/About'
+
+
 
 
 function App() {
@@ -42,8 +45,10 @@ function App() {
   return (
     <>
     <Router>
-    <Navbar title = 'TextUtils' mode={mode} toggleMode = {toggle}/>
+    <Navbar title = 'TextUtils'  mode={mode} toggleMode = {toggle}  /> 
+
     <Alert alert={alert}/>
+   
     <div className="container my-3">
     {/* container is class of bootstrap that places the text box in the center */}
         <Routes>   
