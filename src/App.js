@@ -31,6 +31,7 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor= "#383842";
       showAlert("Dark mode has been enabled","success")
+      //document.title = "TextUtility-Dark mode enable"  //this line changes the title when dark mode is enabled 
     }
     else{
       setMode('light')
@@ -46,7 +47,7 @@ function App() {
     <div className="container my-3">
     {/* container is class of bootstrap that places the text box in the center */}
         <Routes>   
-              <Route exact path="/about" element={<About />} />
+              <Route exact path="/about" element={<About mode={mode} />} />
               {/* we are using the exact key word so to tell react to match exactpath otherwise it will do partial matching  */}
              <Route exact path="/"element={<TextForm heading = "Enter the text to analyze below"  mode={mode} showAlert={showAlert} /> }/>
         </Routes>
