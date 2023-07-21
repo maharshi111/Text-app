@@ -58,7 +58,7 @@ export default function TextForm(props) {
       </div>
       <div className={`container my-3  text-${props.mode==='light'?'dark':'light'}`} >{/* my-3 is also a class of bootstrap that means margin in y of 3  and text is a bootstrap property in case if you want to change the font color to white you can also use the method of the above div*/}
          <h2>Your text summary </h2>
-         <p>{text.split(" ").filter((element)=>element.length!==0 ).length} words and {text.length} characters</p> {/*here we are using filter function to overcome the following problem, when nothing was typed in the text box then also it use to show 1 word it was because of the split function, if we split an empty string by space than also it return a empty string because of this property it was showing 1 word written when nothing was typed in */}
+         <p>{text.split(/\s+/).filter((element)=>element.length!==0 ).length} words and {text.length} characters</p> {/*here we are using filter function to overcome the following problem, when nothing was typed in the text box then also it use to show 1 word it was because of the split function, if we split an empty string by space than also it return a empty string because of this property it was showing 1 word written when nothing was typed in */}
          <p>{0.008*text.split(" ").filter((element)=>element.length!==0 ).length} minutes of reading</p> { /* here we are using filter because before it was showing 0.008 minutes of read when nothing was written the logic is same as the above comment */}
          <h2>preivew</h2>
          <p>{text.length>0?text:"please enter something to preview"}</p>
