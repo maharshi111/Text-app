@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'; // to convert a href to link just replace a with Link and href with to
+import { Link } from 'react-router-dom'; // to convert a href to link just replace 'a' with Link and 'href' with to
 // import ColorPallet from './ColorPallet';
 
 // function changeColor(col){

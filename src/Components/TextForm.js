@@ -17,20 +17,36 @@ export default function TextForm(props) {
      props.showAlert("converted to lower case","success")
   }
 
-  function special( ){
-    const countSpecial = text => {
-      const punct = "!,.-?";
-      let count = 0;
-      for(let i = 0; i < text.length; i++){
-         if(!punct.includes(text[i])){
-            continue;
-         };
-         count++;
-      };
-      return count;
-   };
-   alert( "The number of special characters are "+countSpecial(text));
+//   function special( ){
+//     const countSpecial = text => {
+//       const punct = "!,.-?";
+//       let count = 0;
+//       for(let i = 0; i < text.length; i++){
+//          if(!punct.includes(text[i])){
+//             continue;
+//          };
+//          count++;
+//       };
+//       return count;
+//    };
+//    alert( "The number of special characters are "+countSpecial(text));
+//  }
+
+ function special(text ){
+  const punct = "!,.-?";
+        let count = 0;
+        for(let i = 0; i < text.length; i++){
+           if(!punct.includes(text[i])){
+              continue;
+           };
+           count++;
+        };
+        // return count;
+        alert( "The number of special characters are " + count);
  }
+
+
+
 
  function clearClick( ){
   setText("");
@@ -41,7 +57,7 @@ export default function TextForm(props) {
   // function handleDownClick(event){
   //   event.preventDefault();
   //   setText(event.target.value.toLowerCase())
-  // }
+  // }   
   return (
     <>
       
@@ -52,7 +68,11 @@ export default function TextForm(props) {
           </div>
           <button disabled = {text.length===0 }className="btn btn-primary mx-1 my-1" onClick={handleUPClick}>convert to uppercase</button>
           <button disabled = {text.length===0 } className="btn btn-primary mx-1 my-1" onClick={handleDownClick} >convert to lowercase</button>
-          <button disabled = {text.length===0 } className="btn btn-primary mx-1 my-1" onClick={special} >count special charcters</button>
+          {/* <button disabled = {text.length===0 } className="btn btn-primary mx-1 my-1" onClick={special} >count special charcters</button> */}
+          {/* this button works for the function special() that is commented */}
+          {/* <button disabled = {text.length===0 } className="btn btn-primary mx-1 my-1" onClick={special(text)} >count special charcters</button> */}
+          {/* The above button will not eork , the reason is stated at the end */}
+          <button disabled = {text.length===0 } className="btn btn-primary mx-1 my-1" onClick={()=>special(text)} >count special charcters</button>
           <button disabled = {text.length===0 } className="btn btn-primary mx-1 my-1" onClick={clearClick} >clear</button>
           
       </div>
@@ -63,8 +83,17 @@ export default function TextForm(props) {
          <h2>preivew</h2>
          <p>{text.length>0?text:"please enter something to preview"}</p>
       </div>
-       
+       {/* (/\s+/) splits by one or more white spaces */}
       
     </>
   )
 }
+// When you write onClick={special(text)}, it calls the function special immediately during rendering because you 
+//are invoking the function directly. This is different from passing a function reference.
+
+// Explanation
+// When you use onClick={special(text)}, you are not passing a function reference to be called later when the button
+// is clicked. Instead, you are immediately calling special(text) and passing its return value to onClick. 
+//This means special(text) runs as soon as the component renders, not when the button is clicked.
+
+// To pass a function reference that will be called when the button is clicked, you should use an arrow function:
